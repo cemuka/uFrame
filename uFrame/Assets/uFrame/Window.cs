@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Window : MonoBehaviour
+public class Window
 {
     private Text titleText;
 
@@ -22,6 +22,8 @@ public class Window : MonoBehaviour
 
     private Color headerColor = new Color(0.84f, 0.84f, 0.84f);
     private Color closeButtonColor = new Color(0.90f, 0.40f, 0.40f);
+
+    private Button closeButton;
 
     public Window()
     {
@@ -93,7 +95,7 @@ public class Window : MonoBehaviour
         closeButtonRect.anchorMin = new Vector2(1, .5f);
         closeButtonRect.anchorMax = new Vector2(1f, .5f);
 
-        var closeButton = closeButtonGO.AddComponent<Button>();
+        closeButton = closeButtonGO.AddComponent<Button>();
         var closeImage = closeButtonGO.AddComponent<Image>();
         closeImage.color = closeButtonColor;
         closeButton.targetGraphic = closeImage;
@@ -127,6 +129,16 @@ public class Window : MonoBehaviour
     public void SetTitle(string title)
     {
         titleText.text = title;
+    }
+
+    public void AddListenerToCloseButton(System.Action callback)
+    {
+        closeButton.onClick.AddListener(() => callback());
+    }
+
+    public void Destroy()
+    {
+        GameObject.Destroy(window.gameObject);
     }
 }
 

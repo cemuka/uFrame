@@ -9,5 +9,9 @@ public class Test : MonoBehaviour
         var window = new Window();
         window.SetTitle("Hello World");
         window.SetSize(200, 100);
+        window.AddListenerToCloseButton(()=>{
+            Debug.Log("close btn clicked.");
+            window.Destroy();
+        });
     }
 }
