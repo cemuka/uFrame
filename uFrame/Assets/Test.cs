@@ -10,7 +10,7 @@ public class Test : MonoBehaviour
 
         var window = new Window();
         window.SetTitle("Hello World");
-        window.SetSize(200, 200);
+        window.SetSize(200, 160);
 
         var label = new TextWidget("my label");
         window.root.Add(label);
