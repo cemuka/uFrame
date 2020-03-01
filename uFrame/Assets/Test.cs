@@ -12,10 +12,12 @@ public class Test : MonoBehaviour
         window.SetTitle("Hello World");
         window.SetSize(200, 200);
 
-        var button = new ButtonWidged("click me");
+        var label = new TextWidget("my label");
+        window.root.Add(label);
+
+        var button = new ButtonWidget("hit me");
         window.root.Add(button);
 
-        var button2 = new ButtonWidged("hit me");
-        window.root.Add(button2);
+        window.rootLayout.childAlignment = TextAnchor.MiddleCenter;
     }
 }

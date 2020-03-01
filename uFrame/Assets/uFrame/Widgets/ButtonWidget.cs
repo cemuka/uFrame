@@ -4,18 +4,18 @@ using com.uFrame.Utils;
 
 namespace com.uFrame.Widgets
 {
-    public class ButtonWidged : WidgetBase
+    public class ButtonWidget : WidgetBase
     {
-        public Button button;
-        public Text buttonTitleText;
-        public RectTransform buttonTitleRect;
+        private Button button;
+        private Text buttonTitleText;
+        private RectTransform buttonTitleRect;
 
-        public ButtonWidged(string text) : this ()
+        public ButtonWidget(string text) : this ()
         {
             buttonTitleText.text = text;
         }
 
-        public ButtonWidged()
+        public ButtonWidget()
         {
             root = new ElementRoot();
 
@@ -32,20 +32,22 @@ namespace com.uFrame.Widgets
             root.transform.anchoredPosition = Vector2.zero;
 
             var titleGO = new GameObject("Title Text");
-            var titleRect = titleGO.AddComponent<RectTransform>();
             titleGO.transform.SetParent(root.transform);
-            titleRect.anchorMin = Vector2.zero;      //set anchor min max to be able to stretch
-            titleRect.anchorMax = Vector2.one;
-            titleRect.Right(0f);                     //set manually full stretch
-            titleRect.Left(0f);
-            titleRect.Bottom(0f);
-            titleRect.Top(0f);
+            
+            buttonTitleRect = titleGO.AddComponent<RectTransform>();
+            buttonTitleRect.anchorMin = Vector2.zero;      //set anchor min max to be able to stretch
+            buttonTitleRect.anchorMax = Vector2.one;
+            buttonTitleRect.Right(0f);                     //set manually full stretch
+            buttonTitleRect.Left(0f);
+            buttonTitleRect.Bottom(0f);
+            buttonTitleRect.Top(0f);
             buttonTitleText = titleGO.AddComponent<Text>();
             buttonTitleText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
             buttonTitleText.alignment = TextAnchor.MiddleCenter;
         }
+    
+        public Button GetButtonComponent() => button;
+        public Text   GetTextComponent() => buttonTitleText;
     }
-
-
 }
 
