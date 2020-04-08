@@ -10,14 +10,27 @@ public class Test : MonoBehaviour
 
         var window = new Window();
         window.SetTitle("Hello World");
-        window.SetSize(200, 160);
+        window.SetSize(250, 200);
 
-        var label = new TextWidget("my label");
-        window.root.Add(label);
+        window.root.Add(new ButtonWidget("Hello Button"));
+        
+        // var hbox = new HBoxWidget();
+        // hbox.SetColor(Color.red);
+        // hbox.FillOccupiedContainer();
+        // // hbox.SetSize(200, 200);
+        // window.root.Add(hbox);
+        // var vbox1 = new VBoxWidget();
+        // vbox1.SetSize(50, 50);
+        // var vbox2 = new VBoxWidget();
+        // vbox2.SetSize(50, 50);
 
-        var button = new ButtonWidget("hit me");
-        window.root.Add(button);
+        // vbox1.SetColor(Color.blue);
+        // vbox2.SetColor(Color.cyan);
 
-        window.rootLayout.childAlignment = TextAnchor.MiddleCenter;
+        // hbox.root.Add(vbox1);
+        // hbox.root.Add(vbox2);
+
+        // vbox1.root.Add(new ButtonWidget("hit me button"));
+        // vbox1.SetChildOrientation(TextAnchor.MiddleCenter);
     }
 }
